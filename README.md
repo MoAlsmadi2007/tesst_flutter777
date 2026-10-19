@@ -1,17 +1,11 @@
 # tesst_flutter777
 
-A new Flutter project.
 
-## Getting Started
+هذا المستودع هو جزء من **مرحلة تعلمي** وتطوير مهاراتي في برمجة تطبيقات الهواتف الذكية باستخدام إطار عمل فلاتر (Flutter).
 
-This project is a starting point for a Flutter application.
+### ماذا يوجد هنا؟
+* أكواد لأساسيات بناء الواجهات (Stateless Widgets).
+* أمثلة وتطبيقات على التفاعل مع المستخدم (Stateful Widgets).
+* حلول برمجية للمشاكل الشائعة مثل الـ Overflow.
 
-A few resources to get you started if this is your first Flutter project:
-
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+شاهد رحلتي، واستمتع بالبرمجة! 🚀

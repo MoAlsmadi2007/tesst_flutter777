@@ -200,7 +200,7 @@ drawer:  Drawer(
 
 
 
-class HomeScreen extends StatefulWidget {
+/*class HomeScreen extends StatefulWidget {
   const new({super.key});
 
   @override
@@ -243,5 +243,25 @@ class _HomeScreenState extends State<HomeScreen> {
       backgroundColor: Colors.black,
     );
   }
+}*/
+
+///////////////////////////////////////////////////////////////////////////////////////////////////
+
+class HomeScreen extends StatefulWidget {
+  const new({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
 }
+
+class _HomeScreenState extends State<HomeScreen> {
+  @override
+  Widget build(BuildContext context) {
+    return const Placeholder();
+  }
+}
+
+
+
+
 
