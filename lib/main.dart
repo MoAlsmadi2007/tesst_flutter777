@@ -99,7 +99,7 @@ drawer:  Drawer(
   
       child: ListView(
       
-   //  padding: EdgeInsets.zero, // لإلغاء أي مسافات بيضاء افتراضية أعلى القائمة
+   //  padding: EdgeInsets.zero, 
         children: [
          // Center(
           //  child: CircleAvatar(
@@ -111,7 +111,7 @@ drawer:  Drawer(
             
             decoration: BoxDecoration(
 
-              color: Colors.lightBlue, // لون الرأس الأزرق
+              color: Colors.lightBlue, 
             ),
             child: Text(
             
@@ -125,7 +125,7 @@ drawer:  Drawer(
             leading: const Icon(Icons.home),
             title: const Text('Home',style: TextStyle(color: Colors.lightBlue),),
             onTap: () {
-              // ماذا يحدث عند الضغط على زر Home
+              
             },
           ),
           ListTile(
@@ -133,7 +133,7 @@ drawer:  Drawer(
             leading: const Icon(Icons.settings),
             title: const Text('Settings',style: TextStyle(color: Colors.lightBlue),),
             onTap: () {
-              // ماذا يحدث عند الضغط على زر Settings
+            
             },
           ),
         ],
@@ -248,132 +248,90 @@ class _HomeScreenState extends State<HomeScreen> {
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-/*class HomeScreen extends StatefulWidget {
-  const new({super.key});
 
-  @override
-  State<HomeScreen> createState() => _HomeScreenState();
-}
 
-class _HomeScreenState extends State<HomeScreen> {
-  var show=false;
-  void toggleImage(){
-    setState(() {
-      show=!show;
-    });
-  }
+class HomeScreen extends StatelessWidget {
+  const HomeScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-     floatingActionButton: FloatingActionButton(
-      onPressed:  toggleImage,
-      child: show?Text("hide"):Text("show"),
-    ),
-    body: Center(
-      
-
-
-        child:   show?Image.network('https://images.unsplash.com/photo-1472396961693-142e6e269027',width: 300,height: 600,):Text("NO IMAGE"),
-        
+      appBar: AppBar(
+        title: const Text('ListView', style: TextStyle(color: Colors.black)),
+        backgroundColor: Colors.purple[200],
       ),
-    
-    );
-  }
-}*/
-
-
-
-
-
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  
-
-  class HomeScreen extends StatefulWidget {
-  const new({super.key});
-
-  @override
-  State<HomeScreen> createState() => _HomeScreenState();
-}
-
-class _HomeScreenState extends State<HomeScreen> {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(backgroundColor:Colors.pink,title: Text("ListVeiw",style: TextStyle(color: Colors.black),),),
-      
       body: ListView(
         children: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Container(
-              color: Colors.orange,
-              child: ListTile(
-                title: Text("Item 1",)
-              ),
-),
-
+          Container(
+            color: Colors.amber,
+            padding: const EdgeInsets.all(16.0),
+            child: const Text('Item 1', style: TextStyle(fontSize: 16)),
           ),
-     ListTile(
-      leading: Icon(Icons.map),
-      title: Text("MAP"),
-      subtitle: Text("open the Map"),
-      trailing: Icon(Icons.arrow_forward),
-     ),
-     ListTile(
-      leading: Icon(Icons.book),
-      title: Text("Album"),
-      subtitle: Text("Veiw Your photo"),
-      trailing: Icon(Icons.arrow_forward),
-     ),
-      Padding(
-       padding: const EdgeInsets.all(8.0),
-       child: Container(
-        color: Colors.lightBlue,
-         child: ListTile(
-          leading: Icon(Icons.star,color: Colors.yellowAccent,) ,
-          title: Text("Item Whith Icon",style: TextStyle(color: Colors.black),),
-         ),
-       ),
-     ),
-     ListTile(
-      leading: Icon(Icons.phone),
-      title: Text("Phone"),
-      subtitle: Text("Mack a Phone"),
-      trailing: Icon(Icons.arrow_forward),
-     ),
-   
-     Center(child: Image.network('https://images.unsplash.com/photo-1472396961693-142e6e269027',height: 150,)),
-     ListTile(
-      leading: Icon(Icons.settings),
-      title: Text("Settings"),
-      subtitle: Text("Addjust Your Prefernsec"),
-      trailing: Icon(Icons.arrow_forward),
-     ),
-
-Padding(
-  
-  padding: const EdgeInsets.all(8.0),
-  
-
-    
-     child:  Container(
-        color: Colors.lightGreen,
-        child: ListTile(
-        
-          title: Text("Item With Culomn",style: TextStyle(fontSize: 15),),
-          subtitle: Text("Sacondary Text"),
-        ),
-      ),
-    
-  
-),
-
+          const ListTile(
+            leading: Icon(Icons.map, color: Colors.black54),
+            title: Text('Map'),
+            subtitle: Text('Open The Map'),
+            trailing: Icon(Icons.arrow_forward, color: Colors.black54),
+          ),
+          const ListTile(
+            leading: Icon(Icons.photo_album, color: Colors.black54),
+            title: Text('Album'),
+            subtitle: Text('View Your Photo'),
+            trailing: Icon(Icons.arrow_forward, color: Colors.black54),
+          ),
+          Container(
+            color: Colors.lightBlue[100],
+            padding: const EdgeInsets.all(16.0),
+            child: Row(
+              children: const [
+                Icon(Icons.star, color: Colors.orange),
+                SizedBox(width: 16),
+                Text('Item With Icon', style: TextStyle(fontSize: 16)),
+              ],
+            ),
+          ),
+          const ListTile(
+            leading: Icon(Icons.phone, color: Colors.black54),
+            title: Text('Phone'),
+            subtitle: Text('Make a Call'),
+            trailing: Icon(Icons.arrow_forward, color: Colors.black54),
+          ),
+          Center(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 8.0),
+              child: Image.network(
+                'https://images.unsplash.com/photo-1514888286974-6c03e2ca1dba?ixlib=rb-4.0.3&auto=format&fit=crop&w=150&q=80',
+                width: 100,
+                height: 100,
+                fit: BoxFit.cover,
+              ),
+            ),
+          ),
+          const ListTile(
+            leading: Icon(Icons.settings, color: Colors.black54),
+            title: Text('Settings'),
+            subtitle: Text('Adjust your preferences'),
+            trailing: Icon(Icons.arrow_forward, color: Colors.black54),
+          ),
+          Container(
+            color: Colors.lightGreen[300],
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: const [
+                Text('Item With Column', style: TextStyle(fontSize: 16)),
+                SizedBox(height: 4),
+                Text('Secondary Text', style: TextStyle(fontSize: 14, color: Colors.black54)),
+              ],
+            ),
+          ),
         ],
       ),
-
     );
   }
 }
+
+
 
 
 
