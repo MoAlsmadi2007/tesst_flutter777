@@ -99,7 +99,7 @@ drawer:  Drawer(
   
       child: ListView(
       
-   //  padding: EdgeInsets.zero, // لإلغاء أي مسافات بيضاء افتراضية أعلى القائمة
+   //  padding: EdgeInsets.zero, 
         children: [
          // Center(
           //  child: CircleAvatar(
@@ -111,7 +111,7 @@ drawer:  Drawer(
             
             decoration: BoxDecoration(
 
-              color: Colors.lightBlue, // لون الرأس الأزرق
+              color: Colors.lightBlue, 
             ),
             child: Text(
             
@@ -125,7 +125,7 @@ drawer:  Drawer(
             leading: const Icon(Icons.home),
             title: const Text('Home',style: TextStyle(color: Colors.lightBlue),),
             onTap: () {
-              // ماذا يحدث عند الضغط على زر Home
+              
             },
           ),
           ListTile(
@@ -133,7 +133,7 @@ drawer:  Drawer(
             leading: const Icon(Icons.settings),
             title: const Text('Settings',style: TextStyle(color: Colors.lightBlue),),
             onTap: () {
-              // ماذا يحدث عند الضغط على زر Settings
+            
             },
           ),
         ],
@@ -281,6 +281,29 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 }*/
+
+
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  
+
+
+class HomeScreen extends StatefulWidget {
+  const new({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold();
+  }
+}
+
 
 
 
