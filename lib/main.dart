@@ -247,7 +247,48 @@ class _HomeScreenState extends State<HomeScreen> {
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
-class HomeScreen extends StatefulWidget {
+
+/*class HomeScreen extends StatefulWidget {
+  const new({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  var show=false;
+  void toggleImage(){
+    setState(() {
+      show=!show;
+    });
+  }
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+     floatingActionButton: FloatingActionButton(
+      onPressed:  toggleImage,
+      child: show?Text("hide"):Text("show"),
+    ),
+    body: Center(
+      
+
+
+        child:   show?Image.network('https://images.unsplash.com/photo-1472396961693-142e6e269027',width: 300,height: 600,):Text("NO IMAGE"),
+        
+      ),
+    
+    );
+  }
+}*/
+
+
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  
+
+  class HomeScreen extends StatefulWidget {
   const new({super.key});
 
   @override
@@ -257,7 +298,80 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+      appBar: AppBar(backgroundColor:Colors.pink,title: Text("ListVeiw",style: TextStyle(color: Colors.black),),),
+      
+      body: ListView(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Container(
+              color: Colors.orange,
+              child: ListTile(
+                title: Text("Item 1",)
+              ),
+),
+
+          ),
+     ListTile(
+      leading: Icon(Icons.map),
+      title: Text("MAP"),
+      subtitle: Text("open the Map"),
+      trailing: Icon(Icons.arrow_forward),
+     ),
+     ListTile(
+      leading: Icon(Icons.book),
+      title: Text("Album"),
+      subtitle: Text("Veiw Your photo"),
+      trailing: Icon(Icons.arrow_forward),
+     ),
+      Padding(
+       padding: const EdgeInsets.all(8.0),
+       child: Container(
+        color: Colors.lightBlue,
+         child: ListTile(
+          leading: Icon(Icons.star,color: Colors.yellowAccent,) ,
+          title: Text("Item Whith Icon",style: TextStyle(color: Colors.black),),
+         ),
+       ),
+     ),
+     ListTile(
+      leading: Icon(Icons.phone),
+      title: Text("Phone"),
+      subtitle: Text("Mack a Phone"),
+      trailing: Icon(Icons.arrow_forward),
+     ),
+   
+     Center(child: Image.network('https://images.unsplash.com/photo-1472396961693-142e6e269027',height: 150,)),
+     ListTile(
+      leading: Icon(Icons.settings),
+      title: Text("Settings"),
+      subtitle: Text("Addjust Your Prefernsec"),
+      trailing: Icon(Icons.arrow_forward),
+     ),
+
+Padding(
+  
+  padding: const EdgeInsets.all(8.0),
+  
+
+    
+     child:  Container(
+        color: Colors.lightGreen,
+        child: ListTile(
+        
+          title: Text("Item With Culomn",style: TextStyle(fontSize: 15),),
+          subtitle: Text("Sacondary Text"),
+        ),
+      ),
+    
+  
+),
+
+        ],
+      ),
+
+    );
   }
 }
 
