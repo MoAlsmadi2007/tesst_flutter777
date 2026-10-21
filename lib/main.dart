@@ -247,7 +247,9 @@ class _HomeScreenState extends State<HomeScreen> {
 
 ///////////////////////////////////////////////////////////////////////////////////////////////////
 
-class HomeScreen extends StatefulWidget {
+
+
+/*class HomeScreen extends StatefulWidget {
   const new({super.key});
 
   @override
@@ -255,11 +257,30 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  var show=false;
+  void toggleImage(){
+    setState(() {
+      show=!show;
+    });
+  }
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Scaffold(
+     floatingActionButton: FloatingActionButton(
+      onPressed:  toggleImage,
+      child: show?Text("hide"):Text("show"),
+    ),
+    body: Center(
+      
+
+
+        child:   show?Image.network('https://images.unsplash.com/photo-1472396961693-142e6e269027',width: 300,height: 600,):Text("NO IMAGE"),
+        
+      ),
+    
+    );
   }
-}
+}*/
 
 
 
