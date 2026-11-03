@@ -1,18 +1,27 @@
 
 
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
   runApp(const MyApp());
 }
 class MyApp extends StatelessWidget {
-  const new({super.key});
+  const MyApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return  MaterialApp(
+      /* initialRoute: '/',
+      routes: {
+        '/Home': (context) => HomeScreen(),
+        '/':(context) => const LoginScreen(),
+      },*/
+     home: HomeScreen(),
       debugShowCheckedModeBanner: false,
-      home: HomeScreen(),
+    
     );
   }
 }
@@ -250,7 +259,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
 
 
-class HomeScreen extends StatelessWidget {
+/*class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
 
   @override
@@ -329,11 +338,636 @@ class HomeScreen extends StatelessWidget {
       ),
     );
   }
+}*/
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                                                
+                                                
+                                                 //("Dynamic ListViaw")
+
+
+/*class HomeScreen extends StatefulWidget {
+  const new({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+
+final items= [
+ 
+  {
+    'author': 'Oscar Wilde',
+    'text' : "Be your self; every one else if alraedy taken."
+  },
+
+{
+'author': 'Oscar Wilde',
+'text': 'I have nothing to declare except my genius',
+},
+{
+'author': 'Oscar Wilde',
+'text': 'The truth is rarely pure and never simple',
+
+},
+
+];
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Dynamic ListVeiw",style: TextStyle(color: Colors.blueAccent),),
+        centerTitle: true,
+      ),
+     body: ListView.builder(
+      itemCount: items.length,
+      itemBuilder: (context, index){
+        return Card(
+          child: ListTile(
+            leading: Icon(Icons.label),
+            title: Text(items[index]["text"]??" "),
+            subtitle: Text(items[index]["author"]??" "),
+          ),
+      
+        );
+      },
+     ),
+    );
+  }
+}*/
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                                         
+
+                                         //("Interactive ListView")
+
+
+/*class HimoScreen extends StatefulWidget {
+  const new({super.key});
+
+  @override
+  State<HimoScreen> createState() => _HimoScreenState();
+}
+
+class _HimoScreenState extends State<HimoScreen> {
+
+  final List<String> items= List <String>.generate(20,(i)=>"item $i");
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: ListView.builder(
+        itemCount: items.length,
+        itemBuilder: (context, index){
+          return Dismissible(
+            key: Key(items[index]),
+            onDismissed: (direction){
+             setState(() {
+               items.removeAt(index);
+             },
+             );
+             ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text("Item $index dismissed")));
+            },
+            child: ListTile(title: Text(items[index])),
+          );
+      
+        },
+      ),
+    );
+    
+  }
+}*/
+
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+                                              //("Navigation in Flutter")                   
+
+
+/*class AboutPage extends StatelessWidget {
+const AboutPage({super.key});
+@override
+Widget build(BuildContext context) {
+return Scaffold(
+appBar: AppBar(title: Text('About')),
+body: Center(
+child: ElevatedButton(
+child: Text('Back'),
+onPressed: () {
+Navigator.pop(context); // Go back to previous page
+},
+),
+),
+);
+}
 }
 
 
 
 
+class HomeScreen extends StatelessWidget {
+  const new({super.key});
+
+  Widget? get children => null;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        
+        backgroundColor: Colors.pinkAccent,
+        title: Text("Navigatoin" , style: TextStyle(color: Colors.black) , ),
+        
+
+        ),
+        
+    
+
+      body:Center(
+      
+            
+             child:  Padding(
+              
+                padding: const EdgeInsets.all(8.0),
+               //child: Text("Home",style: TextStyle(color: Colors.black),),
+               child: 
+                  ElevatedButton(
+                  onPressed: () {Navigator.push(context,
+                 MaterialPageRoute(builder: (context) => AboutPage()
+                 ),
+                 );
+                 },
+                  child: Text("Go to About"),
+                 ),
+              
+              ),
+            
+          
+      ),
+
+      
+   
+    
+    );
+  }
+}*/
 
 
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////
+                                           
+                                          // ('تدريب على انشاءاكثر من صفحه والتنقل بينهم')
+
+
+ /*import 'package:flutter/material.dart';
+
+
+
+
+void main() {
+runApp(const MyApp());
+}
+
+
+class MyApp extends StatelessWidget {
+const MyApp({super.key});
+@override
+Widget build(BuildContext context) {
+return MaterialApp(
+debugShowCheckedModeBanner: false,
+// Initial Route
+initialRoute: '/',
+// Named Routes
+routes: {
+'/': (context) => const HomePage(),
+'/home': (context) => const HomeScreen(),
+'/profile': (context) => const ProfileScreen(),
+'/settings': (context) => const SettingsScreen(),
+'/about': (context) => const AboutScreen(),
+},
+);
+}
+}
+// ================= MAIN PAGE =================
+
+
+
+class HomePage extends StatelessWidget {
+const HomePage({super.key});
+@override
+Widget build(BuildContext context) {
+return Scaffold(
+appBar: AppBar(
+title: const Text("Drawer App"),
+),
+// Drawer
+drawer: Drawer(
+child: ListView(
+padding: EdgeInsets.zero,
+children: [
+// Header
+const UserAccountsDrawerHeader(
+accountName: Text("Fadi"),
+accountEmail: Text("fadi@example.com"),
+currentAccountPicture: CircleAvatar(
+child: Icon(Icons.person, size: 40),
+),
+),
+// Home
+ListTile(
+leading: const Icon(Icons.home),
+title: const Text("Home"),
+onTap: () {
+Navigator.pushNamed(context, '/home');
+},
+),
+// Profile
+ListTile(
+leading: const Icon(Icons.person),
+title: const Text("Profile"),
+onTap: () {
+Navigator.pushNamed(context, '/profile');
+},
+),
+// Settings
+ListTile(
+leading: const Icon(Icons.settings),
+title: const Text("Settings"),
+onTap: () {
+Navigator.pushNamed(context, '/settings');
+},
+),
+// About
+ListTile(
+leading: const Icon(Icons.info),
+title: const Text("About"),
+onTap: () {
+Navigator.pushNamed(context, '/about');
+},
+),
+],
+),
+),
+body: const Center(
+child: Text(
+"Main Page",
+style: TextStyle(
+fontSize: 28,
+fontWeight: FontWeight.bold,
+),
+),
+),
+);
+}
+}
+
+
+
+
+// ================= HOME SCREEN =================
+class HomeScreen extends StatelessWidget {
+const HomeScreen({super.key});
+@override
+Widget build(BuildContext context) {
+return Scaffold(
+appBar: AppBar(
+title: const Text("Home"),
+),
+body: const Center(
+child: Text(
+"Home Page",
+style: TextStyle(fontSize: 25),
+),
+),
+);
+}
+}
+
+
+
+// ================= PROFILE SCREEN =================
+class ProfileScreen extends StatelessWidget {
+const ProfileScreen({super.key});
+@override
+Widget build(BuildContext context) {
+return Scaffold(
+appBar: AppBar(
+title: const Text("Profile"),
+),
+body: const Center(
+child: Text(
+"Profile Page",
+style: TextStyle(fontSize: 25),
+),
+),
+);
+}
+}
+
+
+
+// ================= SETTINGS SCREEN =================
+class SettingsScreen extends StatelessWidget {
+const SettingsScreen({super.key});
+@override
+Widget build(BuildContext context) {
+return Scaffold(
+appBar: AppBar(
+title: const Text("Settings"),
+),
+body: const Center(
+child: Text(
+"Settings Page",
+style: TextStyle(fontSize: 25),
+),
+),
+);
+}
+}
+
+
+
+// ================= ABOUT SCREEN =================
+class AboutScreen extends StatelessWidget {
+const AboutScreen({super.key});
+@override
+Widget build(BuildContext context) {
+return Scaffold(
+appBar: AppBar(
+title: const Text("About"),
+),
+body: const Center(
+child: Text(
+"About Page",
+style: TextStyle(fontSize: 25),
+),
+),
+);
+}
+}*/
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+                                            // ('Text Field')
+
+
+/*class LoginScreen extends StatelessWidget {
+  const LoginScreen({super.key});
+
+  //get navigator => null;
+
+  @override
+  Widget build(BuildContext context) {
+  TextEditingController emailController = TextEditingController();
+  TextEditingController passwordController = TextEditingController();
+    return Scaffold(
+      appBar: AppBar(
+        centerTitle: true,
+        title: const Text("teachI", style: TextStyle(color: Colors.black,fontSize: 30),),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 30,vertical: 8),
+              child: TextField(
+                controller: emailController,
+                keyboardType: TextInputType.emailAddress,
+                decoration: InputDecoration(
+                  labelText: "Enter your Email",
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(20),
+                  
+                  ),
+                ),
+                style: TextStyle(color: const Color.fromARGB(255, 0, 0, 0),fontSize: 15)
+              ),
+            
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 30,vertical: 8),
+              child: TextField(
+                controller: passwordController,
+                keyboardType: TextInputType.visiblePassword,
+                decoration: InputDecoration(
+                  labelText: "Enter your Password",
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(20),
+                  ),
+                ),
+                obscureText: true,
+                style: TextStyle(color: const Color.fromARGB(255, 75, 243, 33),fontSize: 20),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(20),
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.lightBlue,
+                ),
+                onPressed: () {
+                  String email = emailController.text;
+                  String password = passwordController.text;
+                  if(email.isEmpty || password.isEmpty){
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(content: Text("Please enter both email and password"),duration: Duration(seconds: 2),)
+                    );
+                  } else if(email== "mohammdsofuan777@gmail.com"&& password=="071"){ 
+                    
+                    Navigator.pushNamed(context, '/Home');
+                  
+                     }
+                     else {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        SnackBar(content: Text("Invalid email or password"),duration: Duration(seconds: 2),)
+                      );
+                     }
+                },
+                child: const Text("Log in",style: TextStyle(fontSize: 20,color: Colors.white),),
+              ),
+            ),
+          ],
+        )
+      )
+    );
+  }
+  
+}
+
+class HomeScreen extends StatelessWidget {
+  HomeScreen({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar:AppBar(
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back, color: Colors.lightBlue),
+          onPressed: () => Navigator.pop(context),
+        ),
+      ),
+      body: Center(
+        child: Text("Welcome to the Home Screen",style: TextStyle(color: Colors.black,fontSize: 20),),
+      ),
+    );
+  }
+}*/
+
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////
+
+                                               //(Form)
+                                                
+
+/*class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
+
+  
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  final formKey = GlobalKey<FormState>();
+  String username = '';
+  String email = '';
+
+  Widget buildUsername() {
+    return TextFormField(
+      decoration: const InputDecoration(
+        labelText: 'Username',
+        border: OutlineInputBorder(),
+      ),
+      validator: (value) =>
+          value == null || value.trim().isEmpty ? 'Enter a username' : null,
+      onSaved: (value) => username = value!.trim(),
+    );
+  }
+
+  Widget buildEmail() {
+    return TextFormField(
+      keyboardType: TextInputType.emailAddress,
+      decoration: const InputDecoration(
+        labelText: 'Email',
+        border: OutlineInputBorder(),
+      ),
+      validator: (value) => value == null || !value.contains('@')
+          ? 'Enter a valid email address'
+          : null,
+      onSaved: (value) => email = value!.trim(),
+    );
+  }
+
+  Widget buildSubmit() {
+    return ElevatedButton(
+      onPressed: () {
+        if (formKey.currentState!.validate()) {
+          formKey.currentState!.save();
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text('Submitted: $username ($email)')),
+          );
+        }
+      },
+      child: const Text('Submit'),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: const Text('Home')),
+body: Form(
+key: formKey,
+//autovalidateMode: AutovalidateMode.onUserInteraction,
+child: ListView(
+padding: EdgeInsets.all(16),
+children: [
+buildUsername(),
+const SizedBox(height: 16),
+buildEmail(),
+const SizedBox(height: 32),
+buildSubmit(),
+],
+),
+),
+    );
+  }
+}*/
+
+
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+//Checkbox                                           
+//Radio 
+//Switch 
+//Slider 
+//DropdownButtonFormField
+
+
+/*class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  bool isChecked = false;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Center(
+        child: CheckboxListTile(
+          title: const Text('Accept License'),
+          value: isChecked,
+          onChanged: (bool? newValue) {
+            setState(() {
+              isChecked = newValue ?? false;
+            });
+          },
+        ),
+      ),
+    );
+  }
+}*/
+
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////
+       
+                                          //(Dailog Box)
+
+
+
+class HomeScreen extends StatefulWidget {
+  const new({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      
+    );
+  }
+}
 
