@@ -3,11 +3,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
-Future<void> main() async {
+/*Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
   runApp(const MyApp());
+}*/
+void main() {
+  runApp(const MyApp());
 }
+
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -954,20 +958,53 @@ class _HomeScreenState extends State<HomeScreen> {
                                           //(Dailog Box)
 
 
-
 class HomeScreen extends StatefulWidget {
-  const new({super.key});
+  const HomeScreen({super.key});
 
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  String selected = 'None';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
+      appBar: AppBar(
+        title: Text('My App'),
+      ),
+      body: Center(
+        child: Text(selected),
+      ),
+      floatingActionButton: FloatingActionButton(onPressed: () async{
+        final result = await _showSimpleDialog(context);
+        result!=null
+        ?
+        setState(() {
+            selected=result;
+        })
+        : "none";
+
+      }),
     );
   }
 }
 
+Future<String?> _showSimpleDialog(BuildContext context) {
+  return showDialog<String>(
+    context: context,
+    builder: (context) {
+      return SimpleDialog(
+        title: const Text('Chose A Languag'),
+        children: [
+          SimpleDialogOption(
+            onPressed: () => Navigator.pop(context, 'English'),
+            child: const Text('English'),
+          ),
+        ],
+      );
+    },
+  );
+}
+ 
